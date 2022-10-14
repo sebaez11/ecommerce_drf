@@ -6,10 +6,22 @@ from apps.users.models import User
 from django.http import Http404
 
 # Third imports
-from rest_framework import authentication, permissions
+from rest_framework import authentication, permissions, mixins, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
+
+
+""" class UserAPIView(generics.ListCreateAPIView):
+    queryset = User.objects.filter(is_active=True)
+    serializer_class = UserSerializer
+
+
+class UserDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.filter(is_active=True)
+    serializer_class = UserSerializer
+    lookup_field = 'id' """
+
 
 
 class UserAPIView(APIView):
