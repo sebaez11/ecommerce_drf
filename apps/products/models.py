@@ -21,7 +21,6 @@ class Category(BaseModel):
     description = models.CharField(max_length=50, 
                                    unique=True, null=False, 
                                    blank=False)
-    measure_unit = models.ForeignKey(MeasureUnit, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Product Category"
@@ -43,6 +42,9 @@ class Indicator(BaseModel):
 
 
 class Product(BaseModel):
+    measure_unit = models.ForeignKey(MeasureUnit, on_delete=models.CASCADE, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+
     name = models.CharField(max_length=150, unique=True, blank=False, null=False)
     description = models.TextField(blank=False, null = False)
     image = models.ImageField(upload_to='products/', blank=True, null=True)
