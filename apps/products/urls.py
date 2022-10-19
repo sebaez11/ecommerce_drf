@@ -2,9 +2,10 @@
 from django.urls import path
 
 # Local imports
-from apps.products.views.general import (MeasureUnitListAPIView,
+from apps.products.views import (MeasureUnitListAPIView,
                                          IndicatorListAPIView,
                                          CategoryListAPIView)
+from apps.products.views import ProductListAPIView
 
 
 urlpatterns = [
@@ -23,4 +24,9 @@ urlpatterns = [
         view=CategoryListAPIView.as_view(),
         name='category'
     ),
+    path(
+        route='',
+        view=ProductListAPIView.as_view(),
+        name='product',
+    )
 ]
